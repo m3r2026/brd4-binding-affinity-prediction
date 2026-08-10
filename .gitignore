@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+best_model.pt
+brd4_bd1_simple.pdb
+brd4_cpi_dataset.pt
+chembl1_output.csv
+chembl2_output_standard.csv
+chembl3_output_clean.csv
+export_artifacts_cell.py
