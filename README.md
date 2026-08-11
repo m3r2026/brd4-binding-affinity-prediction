@@ -47,7 +47,7 @@ GNN (GINEConv) によるCPIモデル学習
 
 ## データと前処理
 
-- **データソース**: ChEMBL REST API（`https://www.ebi.ac.uk/chembl/api/data/activity.json`）を直接HTTPページネーションで叩き、BRD4(UniProt: O60885)に対するIC50活性データを取得。当初はchembl_webresource_clientのみで取得していたが、通信の安定性向上のため直接APIコールへ切り替え。
+- **データソース**: ChEMBL REST API（`https://www.ebi.ac.uk/chembl/api/data/activity.json`）を直接HTTPページネーションで叩き、BRD4(UniProt: O60885)に対するIC50活性データを取得。当初はchembl_webresource_clientのみで取得していたが、通信の安定性向上のため直接APIコールへ切り替え。タンパク質構造は[RCSB PDB](https://www.rcsb.org/structure/3MXF)（3MXF、パブリックドメイン）から取得。
 - **フィルタリング条件**: `standard_type=IC50`, `standard_units=nM`, `pchembl_value`が非null、かつ`standard_relation='='`（不等号による丸め値を除外し、実測値のみを使用）。
 - **単位変換**: `standard_value`(nM)を`pIC50 = -log10(value × 1e-9)`に変換。
 - **SMILES標準化**: RDKitで塩の除去・電荷の中和などを行い、`standard_smiles`として統一。重複する構造はpIC50の平均値に集約。
