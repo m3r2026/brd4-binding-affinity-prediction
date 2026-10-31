@@ -1,0 +1,2 @@
+complex_name,protein_path,ligand_description,protein_sequence
+JQ1_control_S,brd4_bd1_simple.pdb,CC1=C(C)C2=C(S1)N1C(C)=NN=C1[C@H](CC(=O)OC(C)(C)C)N=C2C1=CC=C(Cl)C=C1,
