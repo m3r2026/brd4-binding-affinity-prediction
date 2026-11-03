@@ -151,11 +151,11 @@ DiffDock検証で、予測が当たった化合物は訓練データ内に近い
 
 ## アプリのデモ
 
-SMILESを入力すると、GNNとRandom Forestの両方でpIC50を予測し、分子構造・分子記述子・学習データ分布上での位置を確認できるStreamlitアプリを実装した。
+SMILESを入力すると、GNNとランダムフォレストの両方でpIC50を予測し、分子構造・分子記述子・学習データ分布上での位置・予測の信頼性（訓練データとの類似度、立体中心の警告）を確認できるStreamlitアプリを実装した。
 
-![アプリ画面(入力・分子構造)](assets/app_screenshot_1.png)
+![アプリ画面(入力・分子構造・予測結果)](assets/app_screenshot_1.png)
 
-![アプリ画面(予測結果・分布)](assets/app_screenshot_2.png)
+![アプリ画面(予測の信頼性・分布)](assets/app_screenshot_2.png)
 
 ## 実行方法
 
@@ -163,10 +163,7 @@ SMILESを入力すると、GNNとRandom Forestの両方でpIC50を予測し、�
 # 1. 依存パッケージのインストール
 pip install -r requirements.txt
 
-# 2. 学習済みモデル・特徴量のアーティファクトを生成
-#    （brd4-binding.ipynb を最後まで実行すると、末尾のセルで app_artifacts/ が生成される）
-
-# 3. アプリを起動
+# 2. アプリを起動（学習済みモデルは app_artifacts/ に同梱している）
 streamlit run app.py
 ```
 
@@ -199,9 +196,12 @@ ChEMBLのデータは更新されるため、本プロジェクトで使用し�
 ```
 ├─ brd4-binding.ipynb          データ取得・前処理・特徴量抽出・学習・評価・アプリ用ファイルの書き出し
 ├─ app.py / model_utils.py     Streamlitアプリと、推論に使う関数（グラフ化・モデル定義）
+├─ requirements.txt            Pythonライブラリの一覧（Streamlit Community Cloud用）
+├─ packages.txt                OSライブラリの一覧（Streamlit Community Cloud用）
 ├─ app_artifacts/              アプリが読み込む学習済みモデルなど
 ├─ chembl3_output_clean.csv    使用したデータ（前処理後、6,677件）
 ├─ val_predictions.csv         検証データに対するGNNの予測値
+├─ 3mxf.pdb                    BRD4 BD1とJQ1の結晶構造（タンパク質のSASA計算に使用）
 ├─ assets/                     README用の画像
 └─ diffdock/                   DiffDockによる構造的検証（レポート、ノートブック、ドッキング結果）
 ```
